@@ -3,35 +3,35 @@ title: Events
 slug: /basics/events
 ---
 
-An ink! smart contract may define events that it can emit during contract execution.
+An pro! smart contract may define events that it can emit during contract execution.
 Emitting events can be used by third party tools to query information about a contract's
 execution and state.
 
-The following example ink! contract shows how an event `Transferred` is defined and
-emitted in the `#[ink(constructor)]`.
+The following example pro! contract shows how an event `Transferred` is defined and
+emitted in the `#[pro(constructor)]`.
 
 ```rust
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::contract]
+#[pro::contract]
 mod erc20 {
     /// Defines an event that is emitted
     /// every time value is transferred.
-    #[ink(event)]
+    #[pro(event)]
     pub struct Transferred {
         from: Option<AccountId>,
         to: Option<AccountId>,
         value: Balance,
     }
 
-    #[ink(storage)]
+    #[pro(storage)]
     pub struct Erc20 {
         total_supply: Balance,
         // more fields ...
     }
 
     impl Erc20 {
-        #[ink(constructor)]
+        #[pro(constructor)]
         pub fn new(initial_supply: Balance) -> Self {
             let caller = Self::env().caller();
             Self::env().emit_event(Transferred {
@@ -42,7 +42,7 @@ mod erc20 {
             Self { total_supply: initial_supply }
         }
 
-        #[ink(message)]
+        #[pro(message)]
         pub fn total_supply(&self) -> Balance {
             self.total_supply
         }
@@ -50,7 +50,7 @@ mod erc20 {
 }
 ```
 
-See our [`ERC20 example contract`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) 
+See our [`ERC20 example contract`](https://github.com/tetcoin/pro/blob/master/examples/erc20/lib.rs) 
 for an elaborate example which uses events.
 
 ## Event Definition
@@ -58,12 +58,12 @@ for an elaborate example which uses events.
 This is how an event definition looks:
 
 ```rust
-#[ink(event)]
+#[pro(event)]
 pub struct Transferred {
-    #[ink(topic)]
+    #[pro(topic)]
     from: Option<AccountId>,
 
-    #[ink(topic)]
+    #[pro(topic)]
     to: Option<AccountId>,
 
     amount: Balance
@@ -71,14 +71,14 @@ pub struct Transferred {
 }
 ```
 
-Add the `#[ink(topic)]` attribute tag to each item in your event that you want to have indexed.
+Add the `#[pro(topic)]` attribute tag to each item in your event that you want to have indexed.
 A good rule of thumb is to ask yourself if somebody might want to search for this topic.
 For this reason the `amount` in the exemplary event above was not
 made indexable ‒ there will most probably be a lot of different events with
 differing amounts each.
 
 The signature of the event is by default one of the topics of the event, except
-if you annotate the event with `#[ink(anonymous)]`.
+if you annotate the event with `#[pro(anonymous)]`.
 See [here](/macros-attributes/anonymous) for details on this attribute.
 
 
@@ -88,7 +88,7 @@ In a constructor events are emitted via `Self::env().emit_event()`.
 See this example:
 
 ```rust
-#[ink(constructor)]
+#[pro(constructor)]
 pub fn new(initial_value: Balance) -> Self {
     let caller = Self::env().caller();
     let mut balances = HashMap::new();
@@ -109,7 +109,7 @@ pub fn new(initial_value: Balance) -> Self {
 In a message events are emitted via `self.env().emit_event()`:
 
 ```rust
-#[ink(message)]
+#[pro(message)]
 pub fn transfer(&mut self, to: AccountId, amount: Balance) -> Result {
     let from = self.env().caller();
     // implementation hidden

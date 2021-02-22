@@ -1,22 +1,22 @@
 ---
-title: "#[ink(namespace = \"…\")]"
+title: "#[pro(namespace = \"…\")]"
 slug: /macros-attributes/namespace
 ---
 
-Applicable to ink! trait implementation blocks.
+Applicable to pro! trait implementation blocks.
 
-Applied on ink! trait implementation blocks to disambiguate other trait
+Applied on pro! trait implementation blocks to disambiguate other trait
 implementation blocks with equal names.
 
 ## Example
 
 ```rust
-#[ink(namespace = "my_namespace")]
+#[pro(namespace = "my_namespace")]
 impl MyTrait for MyStorage {
-    #[ink(message)]
+    #[pro(message)]
     fn my_message(&self) {}
 }
 ```
     
-This changes the resulting selectors of all the ink! messages and ink! constructors within the trait implementation.
+This changes the resulting selectors of all the pro! messages and pro! constructors within the trait implementation.
 Thus allowing disambiguation between trait implementations with overlapping message or constructor names.

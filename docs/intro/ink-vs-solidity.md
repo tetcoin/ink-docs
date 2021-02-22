@@ -1,13 +1,13 @@
 ---
-title: ink! vs. Solidity
-slug: /ink-vs-solidity
+title: pro! vs. Solidity
+slug: /pro-vs-solidity
 ---
 
-Here is a brief comparison of features between ink! and Solidity:
+Here is a brief comparison of features between pro! and Solidity:
 
 <div class="comparison">
 
-||ink!|Solidity|
+||pro!|Solidity|
 |:---|:---|:---|
 |Virtual Machine|Any Wasm VM|EVM|
 |Encoding|Wasm|EVM Byte Code|

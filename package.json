@@ -1,7 +1,7 @@
 {
-  "name": "ink-docs",
+  "name": "pro-docs",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --port 8080",

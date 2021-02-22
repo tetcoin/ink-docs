@@ -6,13 +6,13 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:proscape="http://www.proscape.org/namespaces/proscape"
    width="220mm"
    height="110mm"
    viewBox="0 0 220 110"
    version="1.1"
    id="svg7341"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   proscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="packed.svg">
   <defs
      id="defs7335">
@@ -85,8 +85,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Lend"
-       inkscape:isstock="true">
+       proscape:stockid="Arrow1Lend"
+       proscape:isstock="true">
       <path
          transform="matrix(-0.8,0,0,-0.8,-10,0)"
          style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
@@ -99,8 +99,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Lstart"
-       inkscape:isstock="true">
+       proscape:stockid="Arrow1Lstart"
+       proscape:isstock="true">
       <path
          transform="matrix(0.8,0,0,0.8,10,0)"
          style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
@@ -113,8 +113,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Lend"
-       inkscape:isstock="true">
+       proscape:stockid="Arrow1Lend"
+       proscape:isstock="true">
       <path
          transform="matrix(-0.8,0,0,-0.8,-10,0)"
          style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
@@ -127,20 +127,20 @@
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="280.88734"
-     inkscape:cy="294.95454"
-     inkscape:document-units="mm"
-     inkscape:current-layer="g16554"
-     inkscape:document-rotation="0"
+     proscape:pageopacity="0.0"
+     proscape:pageshadow="2"
+     proscape:zoom="0.98994949"
+     proscape:cx="280.88734"
+     proscape:cy="294.95454"
+     proscape:document-units="mm"
+     proscape:current-layer="g16554"
+     proscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1918"
-     inkscape:window-height="1055"
-     inkscape:window-x="0"
-     inkscape:window-y="23"
-     inkscape:window-maximized="1" />
+     proscape:window-width="1918"
+     proscape:window-height="1055"
+     proscape:window-x="0"
+     proscape:window-y="23"
+     proscape:window-maximized="1" />
   <metadata
      id="metadata7338">
     <rdf:RDF>
@@ -154,8 +154,8 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
+     proscape:label="Layer 1"
+     proscape:groupmode="layer"
      id="layer1"
      style="display:inline">
     <rect
@@ -337,9 +337,9 @@
     </g>
   </g>
   <g
-     inkscape:groupmode="layer"
+     proscape:groupmode="layer"
      id="layer2"
-     inkscape:label="kv"
+     proscape:label="kv"
      style="display:none">
     <g
        id="g16919"
@@ -407,9 +407,9 @@
     </g>
   </g>
   <g
-     inkscape:groupmode="layer"
+     proscape:groupmode="layer"
      id="layer3"
-     inkscape:label="spread"
+     proscape:label="spread"
      style="display:none">
     <g
        id="g13701"
@@ -453,9 +453,9 @@
     </g>
   </g>
   <g
-     inkscape:groupmode="layer"
+     proscape:groupmode="layer"
      id="layer4"
-     inkscape:label="packed"
+     proscape:label="packed"
      style="display:inline">
     <path
        fill="#18ffb2"

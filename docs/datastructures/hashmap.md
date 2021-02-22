@@ -3,16 +3,16 @@ title: Working with Datastructures
 slug: /datastructures/hashmap
 ---
 
-In this section we want to demonstrate how to work with ink! datastructures.
+In this section we want to demonstrate how to work with pro! datastructures.
 We will do this using the example of our `HashMap`, which allows you to store items in a key-value mapping.
 
 Here is an example of a mapping from user to a number:
 
 ```rust
-#[ink(storage)]
+#[pro(storage)]
 pub struct MyContract {
     // Store a mapping from AccountIds to a u32
-    my_number_map: ink_storage::collections::HashMap<AccountId, u32>,
+    my_number_map: pro_storage::collections::HashMap<AccountId, u32>,
 }
 ```
 
@@ -20,7 +20,7 @@ This means that for a given key, you can store a unique instance of a value type
 
 ## Storage HashMap API
 
-You can find the full HashMap API in the [crate documentation](https://paritytech.github.io/ink/ink_storage/collections/hashmap/index.html) part of ink!.
+You can find the full HashMap API in the [crate documentation](https://tetcoin.github.io/pro/pro_storage/collections/hashmap/index.html) part of pro!.
 
 Here are some of the most common functions you might use:
 
@@ -69,21 +69,21 @@ So given `my_number_map`, imagine we wanted the default value for any given key 
 
 #![cfg_attr(not(feature = "std"), no_std)]
 
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::contract]
+#[pro::contract]
 mod mycontract {
 
-    #[ink(storage)]
+    #[pro(storage)]
     pub struct MyContract {
         // Store a mapping from AccountIds to a u32
-        my_number_map: ink_storage::collections::HashMap<AccountId, u32>,
+        my_number_map: pro_storage::collections::HashMap<AccountId, u32>,
     }
 
     impl MyContract {
         /// Public function.
         /// Default constructor.
-        #[ink(constructor)]
+        #[pro(constructor)]
         pub fn default() -> Self {
             Self {
                 my_number_map: Default::default(),
@@ -108,26 +108,26 @@ Here is an example:
 
 #![cfg_attr(not(feature = "std"), no_std)]
 
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::contract]
+#[pro::contract]
 mod mycontract {
 
-    #[ink(storage)]
+    #[pro(storage)]
     pub struct MyContract {
         // Store a mapping from AccountIds to a u32
-        my_number_map: ink_storage::collections::HashMap<AccountId, u32>,
+        my_number_map: pro_storage::collections::HashMap<AccountId, u32>,
     }
 
     impl MyContract {
         // Get the value for a given AccountId
-        #[ink(message)]
+        #[pro(message)]
         pub fn get(&self, of: AccountId) -> u32 {
             self.my_number_or_zero(&of)
         }
 
         // Get the value for the calling AccountId
-        #[ink(message)]
+        #[pro(message)]
         pub fn get_my_number(&self) -> u32 {
             let caller = self.env().caller();
             self.my_number_or_zero(&caller)
@@ -154,19 +154,19 @@ As you might have noticed in the example above, we use a special function called
 
 #![cfg_attr(not(feature = "std"), no_std)]
 
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::contract]
+#[pro::contract]
 mod mycontract {
 
-    #[ink(storage)]
+    #[pro(storage)]
     pub struct MyContract {
         // Store a contract owner
         owner: AccountId,
     }
 
     impl MyContract {
-        #[ink(constructor)]
+        #[pro(constructor)]
         pub fn new(init_value: i32) -> Self {
             Self {
                 owner: Self::env().caller();
@@ -191,14 +191,14 @@ impl MyContract {
     /* --snip-- */
 
     /// Set the value for the calling AccountId
-    #[ink(message)]
+    #[pro(message)]
     pub fn set_my_number(&mut self, value: u32) {
         let caller = self.env().caller();
         self.my_number_map.insert(caller, value);
     }
 
     /// Add a value to the existing value for the calling AccountId
-    #[ink(message)]
+    #[pro(message)]
     pub fn add_my_number(&mut self, value: u32) {
         let caller = self.env().caller();
         let my_number = self.my_number_or_zero(&caller);
@@ -226,7 +226,7 @@ We can take advantage of the Rust `Option<T>` type to help use on this task.
 If there's no value on the contract storage we will insert a new one; on
 the contrary if there is an existing value we will only update it.
 
-ink! HashMaps expose the well-known `entry` API that we can use to achieve
+pro! HashMaps expose the well-known `entry` API that we can use to achieve
 this type of "upsert" behavior:
 
 ```rust

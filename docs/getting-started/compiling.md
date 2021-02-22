@@ -9,7 +9,7 @@ Run the following command to compile your smart contract:
 cargo +nightly contract build
 ```
 
-This special command will turn your ink! project into a Wasm binary, a metadata file (which contains the contract's ABI) and a `.contract` file which bundles both.
+This special command will turn your pro! project into a Wasm binary, a metadata file (which contains the contract's ABI) and a `.contract` file which bundles both.
 This `.contract` file can be used for deploying your contract to your chain. If all goes well, you should see a `target` folder which contains these files:
 
 ```

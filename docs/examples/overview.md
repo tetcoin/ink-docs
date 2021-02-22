@@ -3,7 +3,7 @@ title: Overview
 slug: /examples
 ---
 
-In our <a href="https://github.com/paritytech/ink/tree/master/examples">examples folder</a> you find a number of examples written in ink!.
+In our <a href="https://github.com/tetcoin/pro/tree/master/examples">examples folder</a> you find a number of examples written in pro!.
 
 Some of the most interesting ones:
 

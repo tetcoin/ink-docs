@@ -3,12 +3,12 @@ title: Trait Definitions
 slug: /basics/trait-definitions
 ---
 
-Through the `#[ink::trait_definition]` proc. macro it is now possible to define your very own trait definitions that are then implementable by ink! smart contracts.
+Through the `#[pro::trait_definition]` proc. macro it is now possible to define your very own trait definitions that are then implementable by pro! smart contracts.
 
 This allows to define shared smart contract interfaces to different concrete implementations.
-Note that this ink! trait definition can be defined anywhere, even in another crate!
+Note that this pro! trait definition can be defined anywhere, even in another crate!
 
-See our [`ERC20-Trait example contract`](https://github.com/paritytech/ink/blob/master/examples/trait-erc20/lib.rs) 
+See our [`ERC20-Trait example contract`](https://github.com/tetcoin/pro/blob/master/examples/trait-erc20/lib.rs) 
 for an elaborate example which uses trait definitions.
 
 ### Example
@@ -16,51 +16,51 @@ for an elaborate example which uses trait definitions.
 Defined in the `base_erc20.rs` module.
 
 ```rust
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::trait_definition]
+#[pro::trait_definition]
 pub trait BaseErc20 {
     /// Creates a new ERC-20 contract and initializes it with the initial supply for the instantiator.
-    #[ink(constructor)]
+    #[pro(constructor)]
     fn new(initial_supply: Balance) -> Self;
 
     /// Returns the total supply.
-    #[ink(message)]
+    #[pro(message)]
     fn total_supply(&self) -> Balance;
 
     /// Transfers `amount` from caller to `to`.
-    #[ink(message, payable)]
+    #[pro(message, payable)]
     fn transfer(&mut self, to: AccountId, amount: Balance);
 }
 ```
 
-An ink! smart contract definition can then implement this trait definition as follows:
+An pro! smart contract definition can then implement this trait definition as follows:
 
 ```rust
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::contract]
+#[pro::contract]
 mod erc20 {
     use base_erc20::BaseErc20;
 
-    #[ink(storage)]
+    #[pro(storage)]
     pub struct Erc20 {
         total_supply: Balance,
         // more fields ...
     }
 
     impl BaseErc20 for Erc20 {
-        #[ink(constructor)]
+        #[pro(constructor)]
         fn new(initial_supply: Balance) -> Self {
             // implementation ...
         }
 
-        #[ink(message)]
+        #[pro(message)]
         fn total_supply(&self) -> Balance {
             // implementation ...
         }
 
-        #[ink(message, payable)]
+        #[pro(message, payable)]
         fn transfer(&mut self, to: AccountId, amount: Balance) {
             // implementation ...
         }
@@ -86,34 +86,34 @@ use base_erc20::BaseErc20;
 assert_eq!(erc20.total_supply(), 1000);
 ```
 
-There are still many limitations to ink! trait definitions and trait implementations.
+There are still many limitations to pro! trait definitions and trait implementations.
 For example it is not possible to define associated constants or types or have default implemented methods.
-These limitations exist because of technical intricacies, however, please expect that many of those will be tackled in future ink! releases.
+These limitations exist because of technical intricacies, however, please expect that many of those will be tackled in future pro! releases.
 
 
 
 
-Marks trait definitions to ink! as special ink! trait definitions.
+Marks trait definitions to pro! as special pro! trait definitions.
 
-There are some restrictions that apply to ink! trait definitions that
-this macro checks. Also ink! trait definitions are required to have specialized
-structure so that the main [`#[ink::contract]`](`macro@crate::contract`) macro can
+There are some restrictions that apply to pro! trait definitions that
+this macro checks. Also pro! trait definitions are required to have specialized
+structure so that the main [`#[pro::contract]`](`macro@crate::contract`) macro can
 properly generate code for its implementations.
 
 # Example: Definition
 
 ```rust
-use ink_lang as ink;
-type Balance = <ink_env::DefaultEnvironment as ink_env::Environment>::Balance;
+use pro_lang as pro;
+type Balance = <pro_env::DefaultEnvironment as pro_env::Environment>::Balance;
 
-#[ink::trait_definition]
+#[pro::trait_definition]
 pub trait Erc20 {
     /// Constructs a new ERC-20 compliant smart contract using the initial supply.
-    #[ink(constructor)]
+    #[pro(constructor)]
     fn new(initial_supply: Balance) -> Self;
 
     /// Returns the total supply of the ERC-20 smart contract.
-    #[ink(message)]
+    #[pro(message)]
     fn total_supply(&self) -> Balance;
 
     // etc.
@@ -125,36 +125,36 @@ pub trait Erc20 {
 Given the above trait definition you can implement it as shown below:
 
 ```rust
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::contract]
+#[pro::contract]
 mod base_erc20 {
     /// We somehow cannot put the trait in the doc-test crate root due to bugs.
-    #[ink_lang::trait_definition]
+    #[pro_lang::trait_definition]
     pub trait Erc20 {
         Constructors a new ERC-20 compliant smart contract using the initial supply.
-        #[ink(constructor)]
+        #[pro(constructor)]
         fn new(initial_supply: Balance) -> Self;
 
         /// Returns the total supply of the ERC-20 smart contract.
-        #[ink(message)]
+        #[pro(message)]
         fn total_supply(&self) -> Balance;
     }
 
-    #[ink(storage)]
+    #[pro(storage)]
     pub struct BaseErc20 {
         total_supply: Balance,
         // etc ..
     }
 
     impl Erc20 for BaseErc20 {
-        #[ink(constructor)]
+        #[pro(constructor)]
         fn new(initial_supply: Balance) -> Self {
             Self { total_supply: initial_supply }
         }
 
         /// Returns the total supply of the ERC-20 smart contract.
-        #[ink(message)]
+        #[pro(message)]
         fn total_supply(&self) -> Balance {
             self.total_supply
         }

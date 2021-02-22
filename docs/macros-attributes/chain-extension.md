@@ -1,5 +1,5 @@
 ---
-title: "#[ink::chain_extension]"
+title: "#[pro::chain_extension]"
 slug: /macros-attributes/chain-extension
 ---
 
@@ -31,7 +31,7 @@ which are described in more detail below.
 
 Usually the chain extension definition using this proc. macro is provided
 by the author of the chain extension in a separate crate.
-ink! smart contracts using this chain extension simply depend on this crate
+pro! smart contracts using this chain extension simply depend on this crate
 and use its associated environment definition in order to make use of
 the methods provided by the chain extension.
 
@@ -42,37 +42,37 @@ can be flagged:
 
 | Attribute | Required | Default Value | Description |
 |:----------|:--------:|:--------------|:-----------:|
-| `ink(extension = N: u32)` | Yes | - | Determines the unique function ID of the chain extension method. |
-| `ink(handle_status = flag: bool)` | Optional | `true` | Assumes that the returned status code of the chain extension method always indicates success and therefore always loads and decodes the output buffer of the call. |
-| `ink(returns_result = flag: bool)` | Optional | `true` | By default chain extension methods are assumed to return a `Result<T, E>` in the output buffer. Using `returns_result = false` this check is disabled and the chain extension method may return any other type. |
+| `pro(extension = N: u32)` | Yes | - | Determines the unique function ID of the chain extension method. |
+| `pro(handle_status = flag: bool)` | Optional | `true` | Assumes that the returned status code of the chain extension method always indicates success and therefore always loads and decodes the output buffer of the call. |
+| `pro(returns_result = flag: bool)` | Optional | `true` | By default chain extension methods are assumed to return a `Result<T, E>` in the output buffer. Using `returns_result = false` this check is disabled and the chain extension method may return any other type. |
 
-As with all ink! attributes multiple of them can either appear in a contiguous list:
+As with all pro! attributes multiple of them can either appear in a contiguous list:
 ```rust
 type Access = i32;
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::chain_extension]
+#[pro::chain_extension]
 pub trait MyChainExtension {
     type ErrorCode = i32;
   
-    #[ink(extension = 5, handle_status = false, returns_result = false)]
+    #[pro(extension = 5, handle_status = false, returns_result = false)]
     fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
 ```
 
-…or as multiple standalone ink! attributes applied to the same item:
+…or as multiple standalone pro! attributes applied to the same item:
 
 ```rust
 type Access = i32;
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::chain_extension]
+#[pro::chain_extension]
 pub trait MyChainExtension {
   type ErrorCode = i32;
   
-  #[ink(extension = 5)]
-  #[ink(handle_status = false)]
-  #[ink(returns_result = false)]
+  #[pro(extension = 5)]
+  #[pro(handle_status = false)]
+  #[pro(returns_result = false)]
   fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
 ```
@@ -128,9 +128,9 @@ there are 4 different cases with slightly varying semantics:
 Every chain extension defines exactly one `ErrorCode` using the following syntax:
 
 ```rust
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::chain_extension]
+#[pro::chain_extension]
 pub trait MyChainExtension {
     type ErrorCode = MyErrorCode;
 
@@ -151,10 +151,10 @@ In the below example a chain extension is defined that allows its users to read 
 from and to the runtime storage using access privileges:
 
 ```rust
-use ink_lang as ink;
+use pro_lang as pro;
 
 /// Custom chain extension to read to and write from the runtime.
-#[ink::chain_extension]
+#[pro::chain_extension]
 pub trait RuntimeReadWrite {
     type ErrorCode = ReadWriteErrorCode;
 
@@ -163,7 +163,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Actually returns a value of type `Result<Vec<u8>, Self::ErrorCode>`.
-    /// #[ink(extension = 1, returns_result = false)]
+    /// #[pro(extension = 1, returns_result = false)]
     /// fn read(key: &[u8]) -> Vec<u8>;
     ///
     /// Reads from runtime storage.
@@ -180,7 +180,7 @@ pub trait RuntimeReadWrite {
     ///
     /// This requires `ReadWriteError` to implement `From<ReadWriteErrorCode>`
     /// and may potentially return any `Self::ErrorCode` through its return value.
-    #[ink(extension = 2)]
+    #[pro(extension = 2)]
     fn read_small(key: &[u8]) -> Result<(u32, [u8; 32]), ReadWriteError>;
 
     /// Writes into runtime storage.
@@ -188,7 +188,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Actually returns a value of type `Result<(), Self::ErrorCode>`.
-    #[ink(extension = 3, returns_result = false)]
+    #[pro(extension = 3, returns_result = false)]
     fn write(key: &[u8], value: &[u8]);
 
     /// Returns the access allowed for the key for the caller.
@@ -196,7 +196,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Assumes to never fail the call and therefore always returns `Option<Access>`.
-    #[ink(extension = 4, returns_result = false, handle_status = false)]
+    #[pro(extension = 4, returns_result = false, handle_status = false)]
     fn access(key: &[u8]) -> Option<Access>;
 
     /// Unlocks previously aquired permission to access key.
@@ -209,7 +209,7 @@ pub trait RuntimeReadWrite {
     ///
     /// Assumes the call to never fail and therefore does _NOT_ require `UnlockAccessError`
     /// to implement `From<Self::ErrorCode>` as in the `read_small` method above.
-    #[ink(extension = 5, handle_status = false)]
+    #[pro(extension = 5, handle_status = false)]
     fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
 }
 
@@ -256,7 +256,7 @@ pub enum Access {
   WriteOnly,
 }
 
-impl ink_env::chain_extension::FromStatusCode for ReadWriteErrorCode {
+impl pro_env::chain_extension::FromStatusCode for ReadWriteErrorCode {
   fn from_status_code(status_code: u32) -> Result<(), Self> {
     match status_code {
       0 => Ok(()),
@@ -274,17 +274,17 @@ above are often required to implement various traits such as SCALE's `Encode` an
 as well as `scale-info`'s `TypeInfo` trait.
 
 A full example of the above chain extension definition can be seen
-[here](https://github.com/paritytech/ink/blob/017f71d60799b764425334f86b732cc7b7065fe6/crates/lang/macro/tests/ui/chain_extension/simple.rs).
+[here](https://github.com/tetcoin/pro/blob/017f71d60799b764425334f86b732cc7b7065fe6/crates/lang/macro/tests/ui/chain_extension/simple.rs).
 
 ## Example: Environment
 
-In order to allow ink! smart contracts to use the above defined chain extension it needs
+In order to allow pro! smart contracts to use the above defined chain extension it needs
 to be integrated into an `Environment` definition as shown below:
 
 ```rust
 type RuntimeReadWrite = i32;
 
-use ink_env::{Environment, DefaultEnvironment};
+use pro_env::{Environment, DefaultEnvironment};
 
 pub enum CustomEnvironment {}
 
@@ -302,13 +302,13 @@ impl Environment for CustomEnvironment {
 }
 ```
 
-Above we defined the `CustomEnvironment` which defaults to ink!'s `DefaultEnvironment`
+Above we defined the `CustomEnvironment` which defaults to pro!'s `DefaultEnvironment`
 for all constants and types but the `ChainExtension` type which is assigned to our newly
 defined chain extension.
 
 ## Example: Usage
 
-An ink! smart contract can use the above defined chain extension through the `Environment`
+An pro! smart contract can use the above defined chain extension through the `Environment`
 definition defined in the last example section using the `env` macro parameter as
 shown below.
 
@@ -316,34 +316,34 @@ Note that chain extension methods are accessible through `Self::extension()` or
 `self.extension()`. For example as in `Self::extension().read(..)` or `self.extension().read(..)`.
 
 ```rust
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::contract(env = CustomEnvironment)]
+#[pro::contract(env = CustomEnvironment)]
 mod read_writer {
-    use ink_lang as ink;
+    use pro_lang as pro;
     
-    #[ink(storage)]
+    #[pro(storage)]
     pub struct ReadWriter {}
 
     impl ReadWriter {
-        #[ink(constructor)]
+        #[pro(constructor)]
         pub fn new() -> Self { Self {} }
 
-        #[ink(message)]
+        #[pro(message)]
         pub fn read(&self, key: Vec<u8>) -> Result<Vec<u8>, ReadWriteErrorCode> {
             self.env()
                 .extension()
                 .read(&key)
         }
 
-        #[ink(message)]
+        #[pro(message)]
         pub fn read_small(&self, key: Vec<u8>) -> Result<(u32, [u8; 32]), ReadWriteError> {
             self.env()
                 .extension()
                 .read_small(&key)
         }
 
-        #[ink(message)]
+        #[pro(message)]
         pub fn write(
             &self,
             key: Vec<u8>,
@@ -354,14 +354,14 @@ mod read_writer {
                 .write(&key, &value)
         }
 
-        #[ink(message)]
+        #[pro(message)]
         pub fn access(&self, key: Vec<u8>) -> Option<Access> {
             self.env()
                 .extension()
                 .access(&key)
         }
 
-        #[ink(message)]
+        #[pro(message)]
         pub fn unlock_access(&self, key: Vec<u8>, access: Access) -> Result<(), UnlockAccessError> {
             self.env()
                 .extension()
@@ -370,18 +370,18 @@ mod read_writer {
     }
     
     /// Custom chain extension to read to and write from the runtime.
-    #[ink::chain_extension]
+    #[pro::chain_extension]
     pub trait RuntimeReadWrite {
           type ErrorCode = ReadWriteErrorCode;
-          #[ink(extension = 1, returns_result = false)]
+          #[pro(extension = 1, returns_result = false)]
           fn read(key: &[u8]) -> Vec<u8>;
-          #[ink(extension = 2)]
+          #[pro(extension = 2)]
           fn read_small(key: &[u8]) -> Result<(u32, [u8; 32]), ReadWriteError>;
-          #[ink(extension = 3, returns_result = false)]
+          #[pro(extension = 3, returns_result = false)]
           fn write(key: &[u8], value: &[u8]);
-          #[ink(extension = 4, returns_result = false, handle_status = false)]
+          #[pro(extension = 4, returns_result = false, handle_status = false)]
           fn access(key: &[u8]) -> Option<Access>;
-          #[ink(extension = 5, handle_status = false)]
+          #[pro(extension = 5, handle_status = false)]
           fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
     }
     
@@ -423,7 +423,7 @@ mod read_writer {
          ReadOnly,
          WriteOnly,
     }
-    impl ink_env::chain_extension::FromStatusCode for ReadWriteErrorCode {
+    impl pro_env::chain_extension::FromStatusCode for ReadWriteErrorCode {
          fn from_status_code(status_code: u32) -> Result<(), Self> {
              match status_code {
                  0 => Ok(()),
@@ -435,15 +435,15 @@ mod read_writer {
          }
     }
     pub enum CustomEnvironment {}
-    impl ink_env::Environment for CustomEnvironment {
+    impl pro_env::Environment for CustomEnvironment {
          const MAX_EVENT_TOPICS: usize =
-             <ink_env::DefaultEnvironment as ink_env::Environment>::MAX_EVENT_TOPICS;
+             <pro_env::DefaultEnvironment as pro_env::Environment>::MAX_EVENT_TOPICS;
     
-         type AccountId = <ink_env::DefaultEnvironment as ink_env::Environment>::AccountId;
-         type Balance = <ink_env::DefaultEnvironment as ink_env::Environment>::Balance;
-         type Hash = <ink_env::DefaultEnvironment as ink_env::Environment>::Hash;
-         type BlockNumber = <ink_env::DefaultEnvironment as ink_env::Environment>::BlockNumber;
-         type Timestamp = <ink_env::DefaultEnvironment as ink_env::Environment>::Timestamp;
+         type AccountId = <pro_env::DefaultEnvironment as pro_env::Environment>::AccountId;
+         type Balance = <pro_env::DefaultEnvironment as pro_env::Environment>::Balance;
+         type Hash = <pro_env::DefaultEnvironment as pro_env::Environment>::Hash;
+         type BlockNumber = <pro_env::DefaultEnvironment as pro_env::Environment>::BlockNumber;
+         type Timestamp = <pro_env::DefaultEnvironment as pro_env::Environment>::Timestamp;
     
          type ChainExtension = RuntimeReadWrite;
     }
@@ -455,6 +455,6 @@ mod read_writer {
 - Due to technical limitations it is not possible to refer to the `ErrorCode` associated type
   using `Self::ErrorCode` anywhere within the chain extension and its defined methods.
   Instead chain extension authors should directly use the error code type when required.
-  This limitation might be lifted in future versions of ink!.
+  This limitation might be lifted in future versions of pro!.
 - It is not possible to declare other chain extension traits as super traits or super
   chain extensions of another.

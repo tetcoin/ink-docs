@@ -10,9 +10,9 @@ towards beginners please check out our [Guided Tutorial](https://substrate.dev/s
 
 A prerequisite for compiling smart contracts is to have Rust and Cargo installed. Here's [an installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
-## ink! CLI
+## pro! CLI
 
-The first tool we will be installing is [`cargo-contract`](https://github.com/paritytech/cargo-contract), a CLI tool for helping setting up and managing WebAssembly smart contracts written with ink!.
+The first tool we will be installing is [`cargo-contract`](https://github.com/paritytech/cargo-contract), a CLI tool for helping setting up and managing WebAssembly smart contracts written with pro!.
 
 You can install the utility using Cargo with:
 
@@ -26,7 +26,7 @@ You can then use `cargo contract --help` to start exploring the commands made av
 
 ## Substrate Framework Prerequisites
 
-With ink! you can write smart contracts for blockchains built on Substrate.
+With pro! you can write smart contracts for blockchains built on Substrate.
 
 Follow the
 [official installation steps](https://substrate.dev/docs/en/knowledgebase/getting-started/) from the

@@ -7,13 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:proscape="http://www.proscape.org/namespaces/proscape"
    width="825mm"
    height="725mm"
    viewBox="0 0 825 725"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   proscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="sketch.svg">
   <defs
      id="defs2">
@@ -23,8 +23,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Lstart"
-       inkscape:isstock="true">
+       proscape:stockid="Arrow1Lstart"
+       proscape:isstock="true">
       <path
          transform="matrix(0.8,0,0,0.8,10,0)"
          style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
@@ -37,8 +37,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Lend"
-       inkscape:isstock="true">
+       proscape:stockid="Arrow1Lend"
+       proscape:isstock="true">
       <path
          transform="matrix(-0.8,0,0,-0.8,-10,0)"
          style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
@@ -51,9 +51,9 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Lend"
-       inkscape:isstock="true"
-       inkscape:collect="always">
+       proscape:stockid="Arrow1Lend"
+       proscape:isstock="true"
+       proscape:collect="always">
       <path
          transform="matrix(-0.8,0,0,-0.8,-10,0)"
          style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
@@ -66,8 +66,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Lend"
-       inkscape:isstock="true">
+       proscape:stockid="Arrow1Lend"
+       proscape:isstock="true">
       <path
          transform="matrix(-0.8,0,0,-0.8,-10,0)"
          style="fill:#e50000;fill-opacity:1;fill-rule:evenodd;stroke:#e50000;stroke-width:1pt;stroke-opacity:1"
@@ -80,8 +80,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Lstart"
-       inkscape:isstock="true">
+       proscape:stockid="Arrow1Lstart"
+       proscape:isstock="true">
       <path
          transform="matrix(0.8,0,0,0.8,10,0)"
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
@@ -94,8 +94,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Lend"
-       inkscape:isstock="true">
+       proscape:stockid="Arrow1Lend"
+       proscape:isstock="true">
       <path
          transform="matrix(-0.8,0,0,-0.8,-10,0)"
          style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
@@ -108,8 +108,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Lend"
-       inkscape:isstock="true">
+       proscape:stockid="Arrow1Lend"
+       proscape:isstock="true">
       <path
          transform="matrix(-0.8,0,0,-0.8,-10,0)"
          style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
@@ -143,21 +143,21 @@
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.16155358"
-     inkscape:cx="2081.4761"
-     inkscape:cy="1768.5824"
-     inkscape:document-units="mm"
-     inkscape:current-layer="g3104"
-     inkscape:document-rotation="0"
+     proscape:pageopacity="0.0"
+     proscape:pageshadow="2"
+     proscape:zoom="0.16155358"
+     proscape:cx="2081.4761"
+     proscape:cy="1768.5824"
+     proscape:document-units="mm"
+     proscape:current-layer="g3104"
+     proscape:document-rotation="0"
      showgrid="false"
      showguides="true"
-     inkscape:window-width="1918"
-     inkscape:window-height="1055"
-     inkscape:window-x="0"
-     inkscape:window-y="23"
-     inkscape:window-maximized="1" />
+     proscape:window-width="1918"
+     proscape:window-height="1055"
+     proscape:window-x="0"
+     proscape:window-y="23"
+     proscape:window-maximized="1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -171,8 +171,8 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
+     proscape:label="Layer 1"
+     proscape:groupmode="layer"
      id="layer1">
     <rect
        style="fill:#242526;fill-opacity:1;stroke:none;stroke-width:14.5566;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:113.386;stroke-opacity:1"
@@ -237,7 +237,7 @@
              id="tspan1973-9-7"
              x="474.41205"
              y="566.8855"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';fill:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">contracts-pallet</tspan></text>
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Source Code Pro';-proscape-font-specification:'Source Code Pro';fill:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">contracts-pallet</tspan></text>
         <image
            clip-path="url(#ga18cbd6cb1_1_0.4-6-3)"
            fill="#000000"
@@ -386,7 +386,7 @@
            id="tspan1973"
            x="482.0444"
            y="70.174149"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';fill:#ffffff;stroke-width:0.264583">cargo-contract</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Source Code Pro';-proscape-font-specification:'Source Code Pro';fill:#ffffff;stroke-width:0.264583">cargo-contract</tspan></text>
     </g>
     <text
        xml:space="preserve"
@@ -398,7 +398,7 @@
          id="tspan1973-2"
          x="480.38074"
          y="261.92252"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';fill:#ffffff;stroke-width:0.264583">.contract File</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Source Code Pro';-proscape-font-specification:'Source Code Pro';fill:#ffffff;stroke-width:0.264583">.contract File</tspan></text>
     <path
        style="fill:none;stroke:#d8b6ff;stroke-width:1.71533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.71533, 1.71533;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1813-6)"
        d="m 585.51052,145.04595 v 76.62158"

@@ -22,7 +22,7 @@ In Rust, you can make as many implementations as you want. As a stylistic choice
 ```rust
 impl MyContract {
     /// Public function
-    #[ink(message)]
+    #[pro(message)]
     pub fn my_public_function(&self) {
         /* --snip-- */
     }
@@ -38,11 +38,11 @@ impl MyContract {
 
 You can also choose to split things up however is most clear for your project.
 
-Note that all public functions must use the `#[ink(message)]` attribute.
+Note that all public functions must use the `#[pro(message)]` attribute.
 
 ## Storage Value API
 
-Without going into so much detail, storage values are a part of the underlying ink! core layer. In the background, they use a more primitive `cell` type which holds an `Option<T>`. When we try to get the value from storage, we `unwrap` the value, which is why it panics if it is not initialized!
+Without going into so much detail, storage values are a part of the underlying pro! core layer. In the background, they use a more primitive `cell` type which holds an `Option<T>`. When we try to get the value from storage, we `unwrap` the value, which is why it panics if it is not initialized!
 
 ```rust
 impl<T> Value<T>
@@ -74,7 +74,7 @@ We already showed you how to initialize a storage value. Getting the value is ju
 
 ```rust
 impl MyContract {
-    #[ink(message)]
+    #[pro(message)]
     pub fn my_getter(&self) -> u32 {
         self.number
     }

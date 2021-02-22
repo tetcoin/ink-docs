@@ -6,7 +6,7 @@ slug: /datastructures/spread-packed-layout
 ### Storage Organization
 
 The following schema depicts the storage which is exposed
-to ink! by the contracts pallet:
+to pro! by the contracts pallet:
 
 <div class="schema">
     <img src="../img/kv.svg" alt="Storage Organization: Layout" />
@@ -19,17 +19,17 @@ For example it might be a very good idea to store all the information under the 
 On the other hand spreading information across as many cells as possible might be much more efficient if we are dealing with big data structures, a lot of information that is not compact, or when messages that operate on the data always only need a small fraction of the whole data.
 An example for this use case is if you have a vector of user accounts where each account stores potentially a lot of information, e.g. a 32-byte hash etc and where our messages only every operate on only a few of those at a time.
 
-The `ink_storage` crate provides the user full control over the strategy or a mix of these two root strategies through some fundamental abstractions that we are briefly presenting to you.
+The `pro_storage` crate provides the user full control over the strategy or a mix of these two root strategies through some fundamental abstractions that we are briefly presenting to you.
 
 ### Default: Spreading Mode
 
-By default ink! spreads information to as many cells as possible. For example if you have the following `#[ink(storage)]` struct every field will live in its own single storage cell. Note that for `c` all 32 bytes will share the same cell!
+By default pro! spreads information to as many cells as possible. For example if you have the following `#[pro(storage)]` struct every field will live in its own single storage cell. Note that for `c` all 32 bytes will share the same cell!
 
 ```rust
-#[ink(storage)]
+#[pro(storage)]
 pub struct Spreaded {
     a: i32,
-    b: ink_storage::Lazy<i32>,
+    b: pro_storage::Lazy<i32>,
     c: [u8; 32],
 }
 ```
@@ -44,18 +44,18 @@ persisted to storage in a spreaded layout.
 
 ### Packing Storage
 
-We can alter this behaviour by using the `ink_storage::Pack` abstraction:
+We can alter this behaviour by using the `pro_storage::Pack` abstraction:
 
 ```rust
 pub struct Spreaded {
     a: i32,
-    b: ink_storage::Lazy<i32>,
+    b: pro_storage::Lazy<i32>,
     c: [u8; 32],
 }
 
-#[ink(storage)]
+#[pro(storage)]
 pub struct Packed {
-    packed: ink_storage::Pack<Spreaded>,
+    packed: pro_storage::Pack<Spreaded>,
 }
 ```
 
@@ -66,12 +66,12 @@ These abstractions can be combined in various ways, yielding full control to the
 ```rust
 pub struct Spreaded {
     a: i32,
-    b: ink_storage::Lazy<i32>,
+    b: pro_storage::Lazy<i32>,
 }
 
-#[ink(storage)]
+#[pro(storage)]
 pub struct Packed {
-    packed: ink_storage::Pack<Spreaded>,
+    packed: pro_storage::Pack<Spreaded>,
     c: [u8; 32],
 }
 ```
@@ -93,12 +93,12 @@ use typenum::U32;
 
 pub struct Spreaded {
     a: i32,
-    b: ink_storage::Lazy<i32>,
+    b: pro_storage::Lazy<i32>,
 }
 
-#[ink(storage)]
+#[pro(storage)]
 pub struct Packed {
-    packed: ink_storage::Pack<Spreaded>,
+    packed: pro_storage::Pack<Spreaded>,
     c: SmallVec<u8, U32>,
 }
 ```

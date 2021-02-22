@@ -5,7 +5,7 @@ module.exports = {
       'intro/why-rust',
       'intro/why-webassembly',
       'intro/how-it-works',
-      'intro/ink-vs-solidity',
+      'intro/pro-vs-solidity',
     ],
     'Getting started': [
       'getting-started/setup',

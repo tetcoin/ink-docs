@@ -1,15 +1,15 @@
 ---
-title: "#[ink(constructor)]"
+title: "#[pro(constructor)]"
 slug: /macros-attributes/constructor
 ---
 
 Applicable to a method.
 
-Flags a method (or multiple methods) for the ink! storage struct as constructor making it available to the API for instantiating the contract.
+Flags a method (or multiple methods) for the pro! storage struct as constructor making it available to the API for instantiating the contract.
 
-There must be at least one `#[ink(constructor)]` defined method.
+There must be at least one `#[pro(constructor)]` defined method.
 
-Methods flagged with `#[ink(constructor)]` are special in that they are dispatchable
+Methods flagged with `#[pro(constructor)]` are special in that they are dispatchable
 upon contract instantiation. A contract may define multiple such constructors which
 allow users of the contract to instantiate a contract in multiple different ways.
 
@@ -17,18 +17,18 @@ allow users of the contract to instantiate a contract in multiple different ways
 ## Example
 
 ```rust
-use ink_lang as ink;
+use pro_lang as pro;
 
-#[ink::contract]
+#[pro::contract]
 mod erc20 {
-    #[ink(storage)]
+    #[pro(storage)]
     pub struct Erc20 { ... }
 
     impl Erc20 {
-        #[ink(constructor)]
+        #[pro(constructor)]
         pub fn new(initial_supply: Balance) -> Self { .. }
 
-        #[ink(constructor)]
+        #[pro(constructor)]
         pub fn total_supply(&self) -> Balance { .. }
 
         // etc.

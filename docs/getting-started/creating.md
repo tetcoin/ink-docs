@@ -1,13 +1,13 @@
 ---
-title: Creating an ink! Project
-slug: /getting-started/creating-an-ink-project
+title: Creating an pro! Project
+slug: /getting-started/creating-an-pro-project
 ---
 
-ink! is an [Embedded Domain Specific Language](https://wiki.haskell.org/Embedded_domain_specific_language) (EDSL) that you can use to write WebAssembly based smart contracts in the Rust programming language.
+pro! is an [Embedded Domain Specific Language](https://wiki.haskell.org/Embedded_domain_specific_language) (EDSL) that you can use to write WebAssembly based smart contracts in the Rust programming language.
 
-ink! is just standard Rust in a well defined "contract format" with specialized `#[ink(…)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allow ink! to do all the magic needed to create Substrate compatible Wasm bytecode!
+pro! is just standard Rust in a well defined "contract format" with specialized `#[pro(…)]` attribute macros. These attribute macros tell pro! what the different parts of your Rust smart contract represent, and ultimately allow pro! to do all the magic needed to create Substrate compatible Wasm bytecode!
 
-Use the ink! CLI to generate an initial smart contract with some scaffolding code.
+Use the pro! CLI to generate an initial smart contract with some scaffolding code.
 
 Make sure you are in your working directory, and then run:
 
@@ -22,22 +22,22 @@ flipper
 |
 +-- lib.rs                <-- Contract Source Code
 |
-+-- Cargo.toml            <-- Rust Dependencies and ink! Configuration
++-- Cargo.toml            <-- Rust Dependencies and pro! Configuration
 |
 +-- .gitignore
 ```
 
 ## Contract Source Code
 
-The ink CLI automatically generates the source code for the "Flipper" contract, which is about the simplest "smart" contract you can build. You can take a sneak peak as to what will come by looking at the source code here:
+The pro CLI automatically generates the source code for the "Flipper" contract, which is about the simplest "smart" contract you can build. You can take a sneak peak as to what will come by looking at the source code here:
 
-[Flipper Example Source Code](https://github.com/paritytech/ink/blob/v3.0.0-rc1/examples/flipper/lib.rs)
+[Flipper Example Source Code](https://github.com/tetcoin/pro/blob/v3.0.0-rc1/examples/flipper/lib.rs)
 
 The Flipper contract is nothing more than a `bool` which gets flipped from true to false through the `flip()` function. 
 
 ## Testing Your Contract
 
-You will see at the bottom of the source code there is a simple test which verifies the functionality of the contract. We can quickly test that this code is functioning as expected using the **off-chain test environment** that ink! provides.
+You will see at the bottom of the source code there is a simple test which verifies the functionality of the contract. We can quickly test that this code is functioning as expected using the **off-chain test environment** that pro! provides.
 
 In your project folder run:
 

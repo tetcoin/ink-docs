@@ -1,15 +1,15 @@
-const BASE_URL = process.env.NODE_ENV === 'development' ? '/' : '/ink-docs/';
+const BASE_URL = process.env.NODE_ENV === 'development' ? '/' : '/pro-docs/';
 
 module.exports = {
-  title: 'ink! documentation',
-  tagline: 'documentation for ink!',
-  url: 'https://github.com/paritytech/ink',
+  title: 'pro! documentation',
+  tagline: 'documentation for pro!',
+  url: 'https://github.com/tetcoin/pro',
   baseUrl: BASE_URL,
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'paritytech',
   onBrokenLinks: 'warn',
-  projectName: 'ink-docs',
+  projectName: 'pro-docs',
   stylesheets: [
     'fonts/fonts.css'
   ],
@@ -25,18 +25,18 @@ module.exports = {
     navbar: {
       title: '',
       logo: {
-        alt: 'ink!',
+        alt: 'pro!',
         src: 'img/logo-black.svg',
         srcDark: '/img/logo-white.svg',
       },
       items: [
         {
-          href: 'https://github.com/paritytech/ink',
-          label: 'ink! GitHub',
+          href: 'https://github.com/tetcoin/pro',
+          label: 'pro! GitHub',
           position: 'right',
         },
         {
-          href: 'https://github.com/paritytech/ink-docs',
+          href: 'https://github.com/tetcoin/pro-docs',
           label: 'Docs GitHub',
           position: 'right',
         },
@@ -47,12 +47,12 @@ module.exports = {
     ['@docusaurus/preset-classic', {
       docs: {
         sidebarPath: require.resolve('./sidebars.js'),
-        editUrl: 'https://github.com/ink-docs/edit/master/',
+        editUrl: 'https://github.com/pro-docs/edit/master/',
         routeBasePath: '/'
       },
       blog: {
         showReadingTime: true,
-        editUrl: 'https://github.com/ink-docs/edit/master/',
+        editUrl: 'https://github.com/pro-docs/edit/master/',
       },
       theme: {
         customCss: [require.resolve('./src/css/custom.css')],

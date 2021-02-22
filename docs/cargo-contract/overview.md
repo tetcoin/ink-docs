@@ -9,7 +9,7 @@ slug: /cargo-contract-cli
 [m2]: https://crates.io/crates/cargo-contract
 
 `cargo-contract` is a CLI tool which helps you set up and manage
-WebAssembly smart contracts written with ink!.
+WebAssembly smart contracts written with pro!.
 You can find it [here on GitHub](https://github.com/paritytech/cargo-contract)
 and here on [crates.io](https://crates.io/crates/cargo-contract).
 
@@ -48,14 +48,14 @@ Use the `--force` to ensure you are updated to the most recent `cargo-contract` 
 
 ## Usage
 
-In order to initialize a new ink! project you can use:
+In order to initialize a new pro! project you can use:
 
 ```bash
 cargo contract new flipper
 ```
 
 This will create a folder `flipper` in your work directory.
-The folder contains a scaffold `Cargo.toml` and a `lib.rs`, which both contain the necessary building blocks for using ink!.
+The folder contains a scaffold `Cargo.toml` and a `lib.rs`, which both contain the necessary building blocks for using pro!.
 
 The `lib.rs` contains our hello world contract ‒ the `Flipper`, which we explain in the next section.
 
